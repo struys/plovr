@@ -17,6 +17,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonParser;
 import com.google.javascript.jscomp.CheckLevel;
 import com.google.javascript.jscomp.CustomPassExecutionTime;
 import com.google.javascript.jscomp.WarningLevel;
@@ -338,6 +339,14 @@ public enum ConfigOption {
     @Override
     public boolean reset(Config.Builder builder) {
       builder.resetDefines();
+      return true;
+    }
+    
+    @Override
+    public boolean update(String define, Config.Builder builder) {
+      JsonParser p = new com.google.gson.JsonParser();
+      JsonObject o = (JsonObject)p.parse(define);
+      apply(o, builder);
       return true;
     }
   }),

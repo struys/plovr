@@ -464,6 +464,10 @@ public final class Compilation {
   public List<SourceFile> getInputs() {
     return inputs;
   }
+  
+  public Compiler getCompiler() {
+	return compiler;
+  }
 
   @Override
   public String toString() {

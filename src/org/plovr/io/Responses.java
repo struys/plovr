@@ -8,6 +8,8 @@ import java.io.Writer;
 
 import org.plovr.Config;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -53,6 +55,11 @@ public final class Responses {
   public static void writeCss(String css, HttpExchange exchange)
   throws IOException {
     writeText(css, "text/css", exchange);
+  }
+  
+  public static void writeGson(String gson, HttpExchange exchange)
+  throws IOException {
+	writeText(gson, "application/json", exchange);
   }
 
   private static void writeText(String text, String contentType,
